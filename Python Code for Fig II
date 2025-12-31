@@ -1,0 +1,39 @@
+from itertools import product
+
+def hamming_weight(bits):
+    return sum(bits)
+
+def main():
+    # Get input length from user
+    n = int(input("Enter the value of n (tuple length): "))
+    if n <= 0:
+        print("n must be a positive integer.")
+        return
+
+    all_inputs = [
+        x for x in product([0, 1], repeat=n)
+        if hamming_weight(x) % 4 == 0  # only if weight is 0, 4, 8, etc.
+    ]
+    all_outputs = list(product([0, 1], repeat=n))
+
+    print(f"\nValid input-output pairs for n = {n}, where Hamming weight of input is a multiple of 4:\n")
+
+    pair_count = 0
+    for x in all_inputs:
+        sum_x = sum(x)
+        rhs = (sum_x // 2) % 2  # RHS condition
+        for y in all_outputs:
+            if sum(y) % 2 == rhs:
+                pair_count += 1
+                #print(f"{pair_count:>3}: {x} → {y}")
+
+    print(f"\nTotal valid input-output pairs of Hamming weight multiple of 4: {pair_count}")
+
+  # Step 3: Print normalized value (pair_count / 2^{2(n-1)})
+    denominator = 2 ** (2 * (n - 1))
+    ratio = pair_count / denominator
+
+    print(f"Total valid input-output pairs of Hamming weight multiple of 4 / 2^{{2(n-1)}} = {pair_count} / {denominator} = {ratio}")
+
+if __name__ == "__main__":
+    main()
