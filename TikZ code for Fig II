@@ -1,0 +1,35 @@
+\begin{figure}[h!]
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\linewidth,
+    height=0.5\linewidth,
+    xlabel={$n$},
+    ylabel={Ratio},
+    ymin=0,
+    ymax=0.65,
+    xtick={3,4,5,6,7,8,9,10},
+    ytick={0,0.125,0.25,0.375,0.5,0.5625,0.64},
+    grid=both,
+    grid style={line width=.1pt, draw=gray!30},
+    major grid style={line width=.2pt,draw=gray!50},
+    mark options={scale=2},
+]
+\addplot[
+    color=blue,
+    mark=x,
+    thick
+] coordinates {
+    (3,0.25)
+    (4,0.25)
+    (5,0.375)
+    (6,0.5)
+    (7,0.5625)
+    (8,0.5625)
+    (9,0.53125)
+    (10,0.5)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Variation of the ratio with the number of parties $n$. For $n = 3$, the ratio is $0.25$.  For $n = 4$, the ratio remains $0.25$.  For $n = 5$, the ratio increases to $0.375$. For $n = 6$, it further rises to $0.5$. For $n = 7$, the ratio reaches $0.5625$, and it remains the same for $n = 8$. For $n = 9$, the ratio slightly decreases to $0.53125$, and for $n = 10$, it returns to $0.5$.}
+\label{fig:ratio_plot}
+\end{figure}
